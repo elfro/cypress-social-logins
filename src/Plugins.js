@@ -33,6 +33,9 @@ module.exports.GoogleSocialLogin = async function GoogleSocialLogin(options = {}
   let page = await browser.newPage()
   let originalPageIndex = 1
   await page.setViewport({width: 1280, height: 800})
+  await page.setUserAgent(
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
+  )
 
   await page.goto(options.loginUrl)
   await login({page, options})
