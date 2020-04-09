@@ -108,7 +108,7 @@ async function login({page, options} = {}) {
 }
 
 async function typeUsername({page, options} = {}) {
-  let buttonSelector = options.headless ? '#next' : '#identifierNext'
+  let buttonSelector = '#identifierNext'
 
   await page.waitForSelector('input[type="email"]')
   await page.type('input[type="email"]', options.username)
@@ -116,7 +116,7 @@ async function typeUsername({page, options} = {}) {
 }
 
 async function typePassword({page, options} = {}) {
-  let buttonSelector = options.headless ? '#signIn' : '#passwordNext'
+  let buttonSelector = '#passwordNext'
 
   await page.waitForSelector('input[type="password"]', {visible: true})
   await page.type('input[type="password"]', options.password)
