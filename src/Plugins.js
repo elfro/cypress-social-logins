@@ -115,6 +115,7 @@ async function typeUsername({page, options} = {}) {
 async function typePassword({page, options} = {}) {
   let buttonSelector = options.headless ? '#signIn' : '#passwordNext'
 
+  await page.screenshot({path: 'test.png', fullPage: true})
   await page.waitForSelector('input[type="password"]', {visible: true})
   await page.type('input[type="password"]', options.password)
   await page.waitForSelector(buttonSelector, {visible: true})
