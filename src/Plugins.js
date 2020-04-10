@@ -113,6 +113,7 @@ async function typeUsername({page, options} = {}) {
   await page.waitForSelector('input[type="email"]')
   await page.type('input[type="email"]', options.username)
   await page.click(buttonSelector)
+  await page.waitFor(500)
 }
 
 async function typePassword({page, options} = {}) {
@@ -123,6 +124,7 @@ async function typePassword({page, options} = {}) {
   await page.type('input[type="password"]', options.password)
   await page.waitForSelector(buttonSelector, {visible: true})
   await page.click(buttonSelector)
+  await page.waitFor(500)
 }
 
 async function getCookies({page, options} = {}) {
