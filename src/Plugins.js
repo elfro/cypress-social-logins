@@ -33,6 +33,9 @@ module.exports.GoogleSocialLogin = async function GoogleSocialLogin(options = {}
   let page = await browser.newPage()
   let originalPageIndex = 1
   await page.setViewport({width: 1280, height: 800})
+  await page.setUserAgent(
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
+  )
 
   await page.goto(options.loginUrl)
   await login({page, options})
@@ -105,7 +108,7 @@ async function login({page, options} = {}) {
 }
 
 async function typeUsername({page, options} = {}) {
-  let buttonSelector = options.headless ? '#next' : '#identifierNext'
+  let buttonSelector = '#identifierNext'
 
   await page.waitForSelector('input[type="email"]')
   await page.type('input[type="email"]', options.username)
@@ -113,7 +116,7 @@ async function typeUsername({page, options} = {}) {
 }
 
 async function typePassword({page, options} = {}) {
-  let buttonSelector = options.headless ? '#signIn' : '#passwordNext'
+  let buttonSelector = '#passwordNext'
 
   await page.screenshot({path: 'test.png', fullPage: true})
   await page.waitForSelector('input[type="password"]', {visible: true})
